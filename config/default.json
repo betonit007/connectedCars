@@ -1,0 +1,3 @@
+{
+    "mongURI": "mongodb://localhost/connectedCars"
+}
