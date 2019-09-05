@@ -1,3 +1,4 @@
 {
-    "mongURI": "mongodb://localhost/connectedCars"
+    "mongURI": "mongodb://localhost/connectedCars",
+    "jwtSecret": "secret"
 }

@@ -9,10 +9,13 @@ const { check, validationResult } = require('express-validator');
 const Car = require('../models/Car');
 
 router.get('/', async (req, res) => {
-    res.json({msg: 'inventory'})
-    // let allCars = await Cars.find({});
-    // console.log(allCars);
-    // res.json(cars);
+    try {
+        const allCars = await Car.find({}) 
+        res.json(allCars);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
 })
 
 router.post('/', async (req, res) => {
@@ -32,8 +35,13 @@ router.post('/', async (req, res) => {
     })
 
     console.log(newCar);
+    try {
         const newCarAdded = await newCar.save();
         res.json(newCarAdded);
-})
+    } catch(err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+})  
 
 module.exports = router;
