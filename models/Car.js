@@ -30,6 +30,10 @@ const CarSchema = mongoose.Schema({
     type: Number,   // TODO: validate number is between 0 and 12; 0 indicating electric vehicle
     require: true
   },
+  displacement: {
+    type: Number,
+    require: true
+  },
   mileage: {
     type: Number,
     require: true

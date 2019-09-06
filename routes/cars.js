@@ -21,16 +21,17 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     
     const newCar = new Car({
-        fullDesc: '2011 Honda Pilot Touring AWD',
-        stockNo: 0000001,
-        year: 2011,
+        fullDesc: '2008 Honda Accord EX V6 4D Sedan',
+        stockNo: 0000002,
+        year: 2008,
         make: 'Honda',
-        model: 'Pilot',
-        color: 'White',
+        model: 'Accord',
+        color: 'Silver',
         cylinder: 6,
-        mileage: 151000,
-        bodyType: 'Medium SUV',
-        secondDesc: 'A very nice suv!',
+        displacement: 3.5,
+        mileage: 141000,
+        bodyType: '4d Sedan',
+        secondDesc: 'A very nice car!',
         options: ['leather', 'roof', 'wheels']
     })
 
@@ -40,7 +41,7 @@ router.post('/', async (req, res) => {
         res.json(newCarAdded);
     } catch(err) {
         console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).send('Server Error, Unable to add car to inventory. Possibly a dupilicate stock number.');
     }
 })  
 
