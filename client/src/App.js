@@ -7,6 +7,7 @@ const App = () => {
     <div>
      <Router >
             <Fragment>
+            <div className="bg-blue-100">Hello World!</div>
               <Navbar />
               <div>
                 {/* <Alerts /> */}
