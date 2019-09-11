@@ -4,7 +4,7 @@ const CarCard = ( {carDesc, carPhotos }) => {
     return (
         
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <img className="w-full" src={carPhotos[0]} alt={carsDesc} />
+        <img className="w-full" src={carPhotos[0]} alt={carDesc} />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{carDesc}</div>
           <p className="text-gray-700 text-base">

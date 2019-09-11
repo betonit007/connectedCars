@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import CarContext from '../../context/cars/carContext';
 import CarCard from './CarCard';
+import CarSearch from './CarSearch';
 
 import Spinner from '../layout/Spinner';
 
@@ -13,6 +14,8 @@ const Cars = () => {
     }, [])
 
     return (
+        <Fragment>
+          <CarSearch />
         <div className='flex justify-around'>
             {!cars ? <Spinner /> : cars.map(car => 
             (
@@ -24,6 +27,7 @@ const Cars = () => {
             )
             )}
         </div>
+        </Fragment>
     )
 }
 
