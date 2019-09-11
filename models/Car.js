@@ -63,7 +63,8 @@ const CarSchema = mongoose.Schema({
   secondDesc: {
     type: String
   },
-  options: Array
+  options: Array,
+  photos: Array
 
 });
 

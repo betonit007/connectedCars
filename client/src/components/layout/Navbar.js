@@ -7,19 +7,27 @@ import CarIcon from './CarIcon.js';
 
 const Navbar = () => {
 
+  // const authContext = useContext(AuthContext);
+  // const contactContext = useContext(ContactContext);
+
+  // const { isAuthenticated, logout, user } = authContext;
+  // const { clearContacts } = contactContext;
+
   const onLogout = () => {
     alert('logout')
+    // logout();
+    // clearContacts();
   }
 
   const authLinks = (
-    <div className='flex'>
-      <li className='px-5'>
+    <ul className='flex justify-end'>
+      <li className='px-5 text-white'>
         Hello User
-            </li>
-      <li>
-        <a onClick={onLogout} href='#!'>Logout</a>
       </li>
-    </div>
+      <li>
+        <a onClick={onLogout} href='#!' className="text-white">Logout</a>
+      </li>
+    </ul>
   )
 
   const guestLinks = (
@@ -36,7 +44,7 @@ const Navbar = () => {
 
 
   return (
-    <div className="bg-blue-500 w-full h-20 flex items-center flex-wrap">
+    <div className="bg-blue-500 w-full h-20 flex items-center flex-wrap mb-5">
       <div className="flex w-full px-5 justify-center border-b md:w-1/3 md:border-none md:px-5">
         <CarIcon />
         <span className='text-2xl text-white italic'>Connected Cars</span>
