@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <div className="bg-blue-500 w-full border h-20 flex items-center flex-wrap mb-5">
       <div className="flex w-full px-5 justify-center md:w-1/3 md:px-5">
-        <CarIcon />
+       <Link to='/'> <CarIcon /> </Link>
         <span className='text-2xl text-white italic'>Connected Cars</span>
       </div>
       <div className="flex w-full justify-center md:w-2/3 md:justify-end md:pr-10">

@@ -35,6 +35,14 @@ const CarState = props => {
         }
     }
 
+    const filterCars = text => {
+        dispatch({ type: FILTER_CARS, payload: text })
+    }
+
+    const clearFilter = () => {
+        dispatch({ type: CLEAR_FILTER });
+    }
+
     return (
       <CarContext.Provider
         value={{
@@ -42,7 +50,9 @@ const CarState = props => {
             current: state.current,
             filtered: state.filtered,
             error: state.error,
-            getCars
+            getCars,
+            filterCars,
+            clearFilter
         }}
       >
           {props.children}

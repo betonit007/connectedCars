@@ -13,19 +13,50 @@ const Cars = () => {
         carContext.getCars();
     }, [])
 
+    const shuffle = a => {
+      for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+  }
+    if (filtered !== null && filtered.length === 0) {
+      return (
+        <Fragment>
+          <CarSearch />
+          <p className='w-full flex justify-center text-red-600'>No vehicles found, please revise your search!</p>
+        </Fragment>
+      )
+    }
     return (
         <Fragment>
           <CarSearch />
         <div className='flex justify-around'>
-            {!cars ? <Spinner /> : cars.map(car => 
-            (
-              <CarCard 
-                key={car._id}
-                carDesc={car.fullDesc}
-                carPhotos = {car.photos}
-              />
-            )
-            )}
+            {!cars ? <Spinner /> : 
+              (
+                !filtered ? 
+                  shuffle(cars).slice(0, 25).map(car => //shuffle array and return the first 25 cars
+                    (
+                      <CarCard 
+                        key={car._id}
+                        carDesc={car.fullDesc}
+                        carPhotos = {car.photos}
+                      />
+                     )
+                  )
+                  :
+                  (
+                  filtered.slice(0, 25).map(car => (
+                      <CarCard
+                      key={car._id}
+                      carDesc={car.fullDesc}
+                      carPhotos = {car.photos}
+                      />
+                      )
+                    )
+                  )
+              )
+            }
         </div>
         </Fragment>
     )

@@ -21,7 +21,7 @@ export default (state, action) => {
                 ...state,
                 filtered: state.cars.filter(car => {
                     const regex = new RegExp(`${action.payload}`, 'gi'); //match wether upper or lower case
-                    return car.name.match(regex);  
+                    return car.fullDesc.match(regex);  
                 })
             }
         case CLEAR_FILTER:
