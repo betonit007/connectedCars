@@ -1,5 +1,6 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import CarContext from '../../context/cars/carContext';
+import AuthContext from '../../context/auth/authContext';
 import CarCard from './CarCard';
 import CarSearch from './CarSearch';
 
@@ -7,10 +8,13 @@ import Spinner from '../layout/Spinner';
 
 const Cars = () => {
     const carContext = useContext(CarContext);
+    const authContext = useContext(AuthContext);
     const { cars, current, filtered } = carContext;
 
     useEffect(() => {
+        
         carContext.getCars();
+        authContext.loadUser();
     }, [])
 
     const shuffle = a => {

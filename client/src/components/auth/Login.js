@@ -71,7 +71,7 @@ const Login = props => {
         <input
           type='submit'
           value='Login'
-          className='btn'
+          className=''
         />
       </form>
     </div>
