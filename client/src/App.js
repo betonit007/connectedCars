@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/layout/Navbar';
+import Alerts from './components/layout/Alerts';
 import Cars from './components/cars/Cars.js';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -21,7 +22,7 @@ const App = () => {
             <Fragment>
               <Navbar />
               <div>
-                {/* <Alerts /> */}
+                <Alerts />
                 <Switch>
                   <Route exact path='/' component={Cars} />
                   <PrivateRoute exact path='/saved' component={SavedCars} />

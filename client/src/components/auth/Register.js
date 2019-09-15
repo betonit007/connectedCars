@@ -9,10 +9,10 @@ const Register = (props) => {
 
     const { setAlert } = alertContext;
     const { register, error, clearErrors, isAuthenticated } = authContext;
-
+    console.log('top error',error);
     useEffect(() => {
         if(isAuthenticated) {
-            console.log('isAuthenticated')
+            props.history.push('/');
         }
 
         if(error === 'User already exists') {
@@ -49,22 +49,22 @@ const Register = (props) => {
     }
 
     return (
-      <div className='container flex justify-center'>
+      <div className='flex justify-center w-full'>
 
-      <form onSubmit={onSubmit}>
-        <div className=''>
-            <label htmlFor='email'>Name</label>
-            <input 
-                type='text'
-                name='name'
-                value={name}
-                onChange={onChange}
-                required
+        <form onSubmit={onSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-2/3 md:w-1/2">
+          <div className='mb-4'>
+              <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='email'>Name</label>
+              <input className='shadow appearance-none border-rounded w-full'
+                  type='text'
+                  name='name'
+                  value={name}
+                  onChange={onChange}
+                  required
             />
         </div>
-        <div className=''>
-          <label htmlFor='email'>Email Address</label>
-          <input 
+        <div className='mb-4'>
+          <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='email'>Email Address</label>
+          <input className='shadow appearance-none border-rounded w-full'
             type='email'
             name='email'
             value={email}
@@ -73,8 +73,8 @@ const Register = (props) => {
           />
         </div>
         <div className=''>
-          <label htmlFor='password'>Password</label>
-          <input
+          <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='password'>Password</label>
+          <input className='shadow appearance-none border-rounded w-full'
             type='password'
             name='password'
             value={password}
@@ -83,8 +83,8 @@ const Register = (props) => {
           />
         </div>
         <div className=''>
-          <label htmlFor='password'>Confirm Password</label>
-          <input
+          <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='password'>Confirm Password</label>
+          <input className='shadow appearance-none border-rounded w-full mb-4'
             type='password'
             name='password2'
             value={password2}
@@ -94,8 +94,8 @@ const Register = (props) => {
         </div>
         <input
           type='submit'
-          value='Login'
-          className=''
+          value='Register'
+          className='shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded'
         />
       </form>
     </div>

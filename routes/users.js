@@ -27,8 +27,8 @@ router.post('/', [
 
       try {
           let user = await User.findOne({ email });  //check to see if username is already taken
-
           if(user) {
+              
               return res.status(400).json({ msg: 'User already exists' });
           }
 
