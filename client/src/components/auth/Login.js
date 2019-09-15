@@ -50,7 +50,7 @@ const Login = props => {
       <form onSubmit={onSubmit}>
         <div className=''>
           <label htmlFor='email'>Email Address</label>
-          <input
+          <input 
             type='email'
             name='email'
             value={email}
