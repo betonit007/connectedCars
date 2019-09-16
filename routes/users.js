@@ -64,15 +64,16 @@ router.post('/', [
 router.put('/:id', auth, async (req, res) => {   //PUT route since we're just updating the users saved cars
 
     try {
-        let car = await Car.findById(req.params.id); // make sure that the car actually exists
+        console.log(req.body)
+        let car = await Car.findById(req.body.stock); // make sure that the car actually exists
         console.log(car);
         if(!car) return res.status(400).json({ msg: "car not found" });
         let saved = await User.findById(req.user.id);
         if(saved.savedCars.includes(req.params.id)) return res.status(400).json({msg: "Car already exists in your inventory"}); //check to make sure its not already in customer inventory
 
-        car = await User.findByIdAndUpdate(req.user.id, 
-            { "$push": { savedCars: req.params.id } })//update fields with object that we created above (contactFields) lines: 60-65
-            res.json(car);
+        user = await User.findByIdAndUpdate(req.user.id, 
+            { "$push": { savedCars: req.params.id } }, {new: true})// new:true sends back updated value
+            res.json(user);
 
     } catch (err) {
         console.error(err.message);
@@ -91,8 +92,6 @@ router.put('/:id', auth, async (req, res) => {   //PUT route since we're just up
     //     .then(res=>API.getUser(this.context.currentId))
     //     .then(res=>this.setState({allQuestions:res.data.questions, answer:"", question:""}))
     //    }
-
-
 })
 
 
