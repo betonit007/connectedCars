@@ -61,18 +61,17 @@ router.post('/', [
     // @desc     Add saved vehicle to inventory
     // @access   Private
 
-router.put('/:id', auth, async (req, res) => {   //PUT route since we're just updating the users saved cars
-
+router.put('/', auth, async (req, res) => {   //PUT route since we're just updating the users saved cars
+    const { vehicleId, userId } = req.body
     try {
-        console.log(req.body)
-        let car = await Car.findById(req.body.stock); // make sure that the car actually exists
-        console.log(car);
+        
+        let car = await Car.findById(vehicleId); // make sure that the car actually exists
         if(!car) return res.status(400).json({ msg: "car not found" });
-        let saved = await User.findById(req.user.id);
-        if(saved.savedCars.includes(req.params.id)) return res.status(400).json({msg: "Car already exists in your inventory"}); //check to make sure its not already in customer inventory
+        let saved = await User.findById(userId);
+        if(saved.savedCars.includes(vehicleId)) return res.status(400).json({msg: "Car already exists in your inventory"}); //check to make sure its not already in customer inventory
 
         user = await User.findByIdAndUpdate(req.user.id, 
-            { "$push": { savedCars: req.params.id } }, {new: true})// new:true sends back updated value
+            { "$push": { savedCars: vehicleId } }, {new: true})// new:true sends back updated value
             res.json(user);
 
     } catch (err) {

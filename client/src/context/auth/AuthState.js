@@ -11,7 +11,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  SAVE_CAR
 }from '../types';
 
 const AuthState = props => {
@@ -89,6 +90,32 @@ const AuthState = props => {
 
     }
 
+    //Add vehicle to user's 'garage'
+
+    const saveVehicle = async (vehicleId, userId) => {
+      console.log()
+      const config = {
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      }
+      const formData = {
+          vehicleId,
+          userId
+      }
+
+        try {
+          const res = await axios.put('api/users/', formData, config);
+          console.log(res);
+        //   dispatch({
+        //       type: SAVE_CAR,
+        //       payload: res.data
+        //   })
+        } catch (err) {
+            console.log('ERRRRRRRRR>>>', err);
+        }
+    }
+
     //Logout
     const logout = () => dispatch({ type: LOGOUT });
     
@@ -107,6 +134,7 @@ const AuthState = props => {
               error: state.error,
               register,
               loadUser,
+              saveVehicle,
               login,
               logout,
               clearErrors

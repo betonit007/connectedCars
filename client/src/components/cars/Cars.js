@@ -11,10 +11,13 @@ const Cars = () => {
     const authContext = useContext(AuthContext);
     const { cars, current, filtered } = carContext;
 
+   
+
     useEffect(() => {
         
         carContext.getCars();
         authContext.loadUser();
+       
     }, [])
 
     const shuffle = a => {
@@ -25,6 +28,7 @@ const Cars = () => {
       return a;
   }
     if (filtered !== null && filtered.length === 0) {
+  
       return (
         <Fragment>
           <CarSearch />
@@ -32,6 +36,8 @@ const Cars = () => {
         </Fragment>
       )
     }
+
+    
     return (
         <Fragment>
           <CarSearch />
@@ -45,6 +51,9 @@ const Cars = () => {
                         key={car._id}
                         carDesc={car.fullDesc}
                         carPhotos = {car.photos}
+                        user = {authContext.user._id}
+                        carId = {car._id}
+                        saveVehicle = {authContext.saveVehicle}
                       />
                      )
                   )
@@ -55,6 +64,9 @@ const Cars = () => {
                       key={car._id}
                       carDesc={car.fullDesc}
                       carPhotos = {car.photos}
+                      user = {authContext.user._id}
+                      carId = {car._id}
+                      saveVehicle = {authContext.saveVehicle}
                       />
                       )
                     )

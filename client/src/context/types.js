@@ -16,3 +16,4 @@ export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const CAR_ERROR = 'CAR_ERROR';
+export const SAVE_CAR = 'SAVE_CAR';
