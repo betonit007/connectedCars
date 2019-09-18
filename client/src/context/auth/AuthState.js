@@ -21,7 +21,8 @@ const AuthState = props => {
         isAuthenticated: null,
         loading: true,
         user: null,
-        error: null
+        error: null,
+        saved: []
     };
 
     const [state, dispatch] = useReducer(authReducer, initialState);
@@ -107,10 +108,10 @@ const AuthState = props => {
         try {
           const res = await axios.put('api/users/', formData, config);
           console.log(res);
-        //   dispatch({
-        //       type: SAVE_CAR,
-        //       payload: res.data
-        //   })
+          dispatch({
+              type: SAVE_CAR,
+              payload: res.data
+          })
         } catch (err) {
             console.log('ERRRRRRRRR>>>', err);
         }
@@ -137,7 +138,8 @@ const AuthState = props => {
               saveVehicle,
               login,
               logout,
-              clearErrors
+              clearErrors,
+              saved: state.saved
           }}
         > {props.children}
         </AuthContext.Provider>

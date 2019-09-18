@@ -13,16 +13,20 @@ import {
 export default (state, action) => {
     switch (action.type) {
         case USER_LOADED:
+            console.log(action.payload);
             return {
                 ...state,
                 isAuthenticated: true,
                 loading: false,
-                user: action.payload
+                user: action.payload,
+                saved: action.payload.savedCars
             }
         case SAVE_CAR:
-            return {...state,
-                     saved: action.payload
-                    }
+            return {
+                ...state,
+                loading: false,
+                saved: action.payload.savedCars
+            }
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.token) //registration successful so set token to local storage
@@ -37,14 +41,14 @@ export default (state, action) => {
         case LOGOUT:
         case LOGIN_FAIL:
             localStorage.removeItem('token') //romove any token in storage since login failed.
-            console.log(action.payload)
             return {
                 ...state,
                 token: null,
                 isAuthenticated: false,
                 loading: false,
                 user: null,
-                error: action.payload
+                error: action.payload,
+                saved: []
             }
         case CLEAR_ERRORS:
             return {

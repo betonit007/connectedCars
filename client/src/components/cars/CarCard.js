@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId }) => {
- 
+const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved }) => {
+  
+  console.log(saved);
+
   return (
 
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
@@ -13,7 +15,7 @@ const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId }) => {
         </p>
       </div>
       <div className="px-6 py-4">
-        <button onClick={() => saveVehicle(carId, user)}>Save Car</button>
+        { saved  ? <button>Saved</button> : <button onClick={() => saveVehicle(carId, user)}>Save Car</button>}
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import CarContext from '../../context/cars/carContext';
 import AuthContext from '../../context/auth/authContext';
 import CarCard from './CarCard';
@@ -9,24 +9,24 @@ import Spinner from '../layout/Spinner';
 const Cars = () => {
     const carContext = useContext(CarContext);
     const authContext = useContext(AuthContext);
-    const { cars, current, filtered } = carContext;
-
-   
+    const { cars, filtered } = carContext;
+    const { saveVehicle, user, saved} = authContext;
 
     useEffect(() => {
-        
-        carContext.getCars();
-        authContext.loadUser();
-       
-    }, [])
+      carContext.getCars();
+      authContext.loadUser();
+      console.log('useEffect', saved);
+  }, [])
 
-    const shuffle = a => {
-      for (let i = a.length - 1; i > 0; i--) {
+    const shuffle = (array) => {
+      if (true) return array
+      for (let i = array.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
-          [a[i], a[j]] = [a[j], a[i]];
+          [array[i], array[j]] = [array[j], array[i]];
       }
-      return a;
+      return array;
   }
+
     if (filtered !== null && filtered.length === 0) {
   
       return (
@@ -51,9 +51,10 @@ const Cars = () => {
                         key={car._id}
                         carDesc={car.fullDesc}
                         carPhotos = {car.photos}
-                        user = {authContext.user._id}
+                        user = {user && user._id}
                         carId = {car._id}
-                        saveVehicle = {authContext.saveVehicle}
+                        saveVehicle = {saveVehicle}
+                        saved = {saved ? saved.indexOf(car._id) > -1 : false}
                       />
                      )
                   )
@@ -64,9 +65,10 @@ const Cars = () => {
                       key={car._id}
                       carDesc={car.fullDesc}
                       carPhotos = {car.photos}
-                      user = {authContext.user._id}
+                      user = {user && user._id }
                       carId = {car._id}
-                      saveVehicle = {authContext.saveVehicle}
+                      saveVehicle = {saveVehicle}
+                      saved = {saved ? saved.indexOf(car._id) > -1 : false}
                       />
                       )
                     )
