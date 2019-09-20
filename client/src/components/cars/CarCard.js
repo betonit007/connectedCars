@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved }) => {
   
-  console.log(saved);
+ const renderSavedButton = () => {
+    if (!user) {
+      return null
+    }
+    else if (saved) {
+      return <button>Saved</button>
+    }
+    else return <button onClick={() => saveVehicle(carId, user)}>Save Car</button>
+  }
 
   return (
 
@@ -15,7 +23,7 @@ const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved }) => {
         </p>
       </div>
       <div className="px-6 py-4">
-        { saved  ? <button>Saved</button> : <button onClick={() => saveVehicle(carId, user)}>Save Car</button>}
+        {renderSavedButton()}
       </div>
     </div>
   )

@@ -41,7 +41,7 @@ const Cars = () => {
     return (
         <Fragment>
           <CarSearch />
-        <div className='flex justify-around'>
+        <div className='flex flex-wrap'>
             {!cars ? <Spinner /> : 
               (
                 !filtered ? 

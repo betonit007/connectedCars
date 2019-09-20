@@ -5,7 +5,7 @@ import ContactContext from '../../context/cars/carContext';
 
 import CarIcon from './CarIcon.js';
 
-const Navbar = () => {
+const Navbar = (props) => {
 
   const authContext = useContext(AuthContext);
   const contactContext = useContext(ContactContext);
