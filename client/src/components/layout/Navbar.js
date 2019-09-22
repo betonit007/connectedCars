@@ -1,11 +1,11 @@
 import React, { Fragment, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import ContactContext from '../../context/cars/carContext';
 
 import CarIcon from './CarIcon.js';
 
-const Navbar = (props) => {
+const Navbar = props => {
 
   const authContext = useContext(AuthContext);
   const contactContext = useContext(ContactContext);
@@ -15,6 +15,7 @@ const Navbar = (props) => {
 
   const onLogout = () => {
     logout();
+    props.history.push('/');
   }
 
   const authLinks = (
@@ -54,4 +55,4 @@ const Navbar = (props) => {
   )
 }
 
-export default Navbar;
+export default withRouter(Navbar);
