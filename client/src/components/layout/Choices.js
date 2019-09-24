@@ -7,53 +7,35 @@ import cleanFront from './img/cleanfront.jpg';
 const Choices = () => {
 
 	const [choices, setChoice] = useState({
-		choice: 1
+		choice: 1,
 	})
 
-	const { choice } = choices;
+	let { choice } = choices;
 
 	const handleChoice = chosen => {
 		setChoice({ choice: chosen })
 	}
 
-	const renderChoice = () => {
+	const renderBackGroundImage = () => {
 		switch (choice) {
 			case 1:
-				return (
-					<div className="customHeight" style={{ backgroundImage: `url("${cleanFront}")`, backgroundSize: `cover` }}>
-						<div className='w-1/2 text-white m-auto flex justify-around pt-5'>
-							<button onClick={() => handleChoice(1)}>Choice 1</button>
-							<button onClick={() => handleChoice(2)}>Choice 2</button>
-							<button onClick={() => handleChoice(3)}>Choice 3</button>
-						</div>
-					</div>
-				)
+				return cleanFront;
 			case 2:
-				return (
-					<div className="customHeight" style={{ backgroundImage: `url("${couple}")`, backgroundSize: `cover` }}>
-						<div className='w-1/2 m-auto flex justify-around pt-5'>
-							<button onClick={() => handleChoice(1)}>Choice 1</button>
-							<button onClick={() => handleChoice(2)}>Choice 2</button>
-							<button onClick={() => handleChoice(3)}>Choice 3</button>
-						</div>
-					</div>
-				)
+				return buyPic;
 			case 3:
-				return (
-					<div className="customHeight" style={{ backgroundImage: `url("${research}")`, backgroundSize: `cover` }}>
-						<div className='w-1/2 m-auto flex justify-around pt-5'>
-							<button onClick={() => handleChoice(1)}>Choice 1</button>
-							<button onClick={() => handleChoice(2)}>Choice 2</button>
-							<button onClick={() => handleChoice(3)}>Choice 3</button>
-						</div>
-					</div>
-				)
+				return couple;
 		}
 	}
 
 	return (
 		<div className="w-full">
-			{renderChoice()}
+			<div className="customHeight" style={{ backgroundImage: `url("${renderBackGroundImage()}")`, backgroundSize: `cover` }}>
+				<div className='w-1/2 text-white m-auto flex justify-around pt-5'>
+					<button className={choice === 1 ? "italic outlineText" : "outlineText"} onClick={() => handleChoice(1)}>Choice 1</button>
+					<button className={choice === 2 ? "italic outlineText" : "outlineText"} onClick={() => handleChoice(2)}>Choice 2</button>
+					<button className={choice === 3 ? "italic outlineText" : "outlineText"} onClick={() => handleChoice(3)}>Choice 3</button>
+				</div>
+			</div>
 		</div>
 
 	)

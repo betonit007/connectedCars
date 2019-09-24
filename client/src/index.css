@@ -8479,6 +8479,14 @@ video {
   }
 }
 
+.outlineText {
+  text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
