@@ -1,9 +1,10 @@
 import React, { Fragment, useContext } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom'; //withRouter adds history to props (history.push)
 import AuthContext from '../../context/auth/authContext';
 import ContactContext from '../../context/cars/carContext';
 
 import CarIcon from './CarIcon.js';
+import UserIcon from'./UserIcon';
 
 const Navbar = props => {
 
@@ -19,9 +20,9 @@ const Navbar = props => {
   }
 
   const authLinks = (
-    <ul className='flex justify-end'>
+    <ul className='flex justify-center'>
       <li className='text-white pr-5'>
-        <span>Welcome {user && user.name}!</span>
+        <div className="flex"><UserIcon/>{user && user.name}</div>
       </li>
       <li className='text-white pr-5'><Link to='/saved'>Saved Cars</Link></li>
       <li>
@@ -31,22 +32,26 @@ const Navbar = props => {
   )
 
   const guestLinks = (
-    <ul className='flex justify-end'>
-      <li className='px-5 text-white'>
-        <Link to="/register" >Register</Link>
-      </li>
+    <div className='flex justify-center text-white'>
+      <ul className='flex'>
+        <li className='px-3'>
+          <Link to="/register">Register</Link>
+        </li>
 
-      <li>
-        <Link to="/login" className='text-white'>Login</Link>
-      </li>
-    </ul>
+        <li className='px-3'>
+          <Link to="/login">Login</Link>
+        </li>
+      </ul>
+    </div>
   )
 
   return (
     <div className="bg-blue-500 w-full border h-20 flex items-center flex-wrap mb-5">
-      <div className="flex w-full px-5 justify-center md:w-1/3 md:px-5">
-       <Link to='/'> <CarIcon /> </Link>
-        <span className='text-2xl text-white italic'>Connected Cars</span>
+      <div className='m-auto'>
+        <div className="flex w-full pr-5 justify-center">
+          <Link to='/'> <CarIcon /> </Link>
+          <span className='text-2xl text-white italic'>Connected Cars</span>
+        </div>
       </div>
       <div className="flex w-full justify-center md:w-2/3 md:justify-end md:pr-10">
         {isAuthenticated ? authLinks : guestLinks}

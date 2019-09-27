@@ -15,7 +15,6 @@ const Cars = () => {
   useEffect(() => {
     carContext.getCars();
     authContext.loadUser();
-    console.log('useEffect', saved);
   }, [])
 
   const shuffle = (array) => {

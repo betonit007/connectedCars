@@ -15,7 +15,9 @@ const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved }) => {
   return (
 
     <div className="bg-white rounded m-2 overflow-hidden shadow-xl">
-      <img className="w-full" src={carPhotos[0]} alt={carDesc} />
+      <div className="sm:h-64 md:h-56 overflow-hidden">
+        <img src={carPhotos[0]} alt={carDesc} />
+      </div>
       <div className="bg-gray-300 h-full">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{carDesc}</div>

@@ -79,19 +79,6 @@ router.put('/', auth, async (req, res) => {   //PUT route since we're just updat
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-
-    // Example Code from Study Buddy***********************************
-    // handleQuestion=(currentId)=> {
-    //     const sendIt = {
-    //       question: this.state.question,
-    //       answer: this.state.answer
-    //     };
-   
-    //     API.saveQuestion(sendIt)
-    //     .then(res=>API.updateUserQuestion(currentId, { "$push": {questions:res.data._id}}))
-    //     .then(res=>API.getUser(this.context.currentId))
-    //     .then(res=>this.setState({allQuestions:res.data.questions, answer:"", question:""}))
-    //    }
 })
 
 
