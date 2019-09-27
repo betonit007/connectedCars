@@ -8487,6 +8487,10 @@ video {
       .5px .5px 0 #000;
 }
 
+.modal {
+  background: rgba(0, 0, 0, .7);
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

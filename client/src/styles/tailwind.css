@@ -133,3 +133,7 @@
       -.5px .5px 0 #000,
       .5px .5px 0 #000;
   }
+
+  .modal {
+    background: rgba(0, 0, 0, .7);
+  }

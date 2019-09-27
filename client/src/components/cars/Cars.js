@@ -3,6 +3,7 @@ import CarContext from '../../context/cars/carContext';
 import AuthContext from '../../context/auth/authContext';
 import CarCard from './CarCard';
 import CarSearch from './CarSearch';
+import Modal from './Modal';
 
 import Spinner from '../layout/Spinner';
 
@@ -40,6 +41,7 @@ const Cars = () => {
   return (
     <Fragment>
       <CarSearch />
+      <Modal />
       <div className={!cars ? `` : (filtered ? `flex flex-wrap justify-center` : `grid`)}>   {/*No Styling if loading / use grid if not filter / use wrap if filtered */}
         {!cars ? <Spinner /> :
           (
