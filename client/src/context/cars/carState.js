@@ -7,7 +7,9 @@ import {
     FILTER_CARS,
     CLEAR_FILTER,
     CAR_ERROR,
-    GET_CARS
+    GET_CARS,
+    CAR_PICKED,
+    CAR_UNPICKED
 } from '../types';
 
 const CarState = props => {
@@ -15,7 +17,8 @@ const CarState = props => {
         cars: null,
         current: null,
         filtered: null,
-        error: null
+        error: null,
+        carClicked: false
     };
     
     const [state, dispatch] = useReducer(carReducer, initialState);
@@ -35,6 +38,14 @@ const CarState = props => {
         }
     }
 
+    const carPicked = carInfo => {
+        dispatch({ type: CAR_PICKED, payload: 'test' })
+    }
+
+    const carUnPicked = () => {
+        dispatch({ type: CAR_UNPICKED, payload: 'test' })
+    }
+
     const filterCars = text => {
         dispatch({ type: FILTER_CARS, payload: text })
     }
@@ -52,7 +63,10 @@ const CarState = props => {
             error: state.error,
             getCars,
             filterCars,
-            clearFilter
+            clearFilter,
+            carPicked,
+            carUnPicked,
+            carSelected: state.carSelected
         }}
       >
           {props.children}

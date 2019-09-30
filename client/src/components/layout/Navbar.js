@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom'; //withRouter adds history to props (history.push)
 import AuthContext from '../../context/auth/authContext';
 import ContactContext from '../../context/cars/carContext';
@@ -14,6 +14,10 @@ const Navbar = props => {
   const { isAuthenticated, logout, user } = authContext;
   const { clearFilter } = contactContext;
 
+  // useEffect(() => {
+  //   const thisUrl = props.location.pathname;
+  // }, [])
+
   const onLogout = () => {
     logout();
     props.history.push('/');
@@ -24,7 +28,7 @@ const Navbar = props => {
       <li className='text-white pr-5'>
         <div className="flex"><UserIcon/>{user && user.name}</div>
       </li>
-      <li className='text-white pr-5'><Link to='/saved'>Saved Cars</Link></li>
+      <li className='text-white pr-5'>{props.location.pathname !== '/saved' ? <Link to='/saved'>Saved Cars</Link> : <Link to='/cars'>Inventory</Link>}</li>
       <li>
         <span onClick={onLogout} className="pr-5 text-white">Logout</span>
       </li>

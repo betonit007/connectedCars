@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect} from 'react';
 import CarContext from '../../context/cars/carContext';
 import AuthContext from '../../context/auth/authContext';
 import CarCard from './CarCard';
@@ -10,7 +10,7 @@ import Spinner from '../layout/Spinner';
 const Cars = () => {
   const carContext = useContext(CarContext);
   const authContext = useContext(AuthContext);
-  const { cars, filtered } = carContext;
+  const { cars, filtered, carPicked, carSelected } = carContext;
   const { saveVehicle, user, saved } = authContext;
 
   useEffect(() => {
@@ -41,7 +41,10 @@ const Cars = () => {
   return (
     <Fragment>
       <CarSearch />
-      <Modal />
+      {carSelected && <Modal 
+                  
+                />
+      }
       <div className={!cars ? `` : (filtered ? `flex flex-wrap justify-center` : `grid`)}>   {/*No Styling if loading / use grid if not filter / use wrap if filtered */}
         {!cars ? <Spinner /> :
           (
@@ -56,6 +59,7 @@ const Cars = () => {
                     carId={car._id}
                     saveVehicle={saveVehicle}
                     saved={saved ? saved.indexOf(car._id) > -1 : false}
+                    carPicked={carPicked}
                   />
                 )
               )
@@ -70,6 +74,7 @@ const Cars = () => {
                     carId={car._id}
                     saveVehicle={saveVehicle}
                     saved={saved ? saved.indexOf(car._id) > -1 : false}
+                    carPicked={carPicked}
                   />
                 )
                 )

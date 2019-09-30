@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved }) => {
+const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved, carPicked }) => {
 
   const renderSavedButton = () => {
     if (!user) {
@@ -14,9 +14,9 @@ const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved }) => {
 
   return (
 
-    <div className="bg-white rounded m-2 overflow-hidden shadow-xl">
-      <div className="sm:h-64 md:h-56 overflow-hidden">
-        <img src={carPhotos[0]} alt={carDesc} />
+    <div className="bg-white rounded m-2 overflow-hidden shadow-xl md:max-w-xs">
+      <div className="overflow-hidden md:h-56 m-auto">
+        <img src={carPhotos[0]} alt={carDesc}/>
       </div>
       <div className="bg-gray-300 h-full">
         <div className="px-6 py-4">
@@ -25,8 +25,9 @@ const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved }) => {
             {carDesc}
           </p>
         </div>
-        <div className="px-6 py-4">
+        <div className="w-full flex justify-around">
           {renderSavedButton()}
+          <button onClick={()=>carPicked()}>Pick</button>
         </div>
       </div>
     </div>

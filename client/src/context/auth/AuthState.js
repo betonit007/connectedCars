@@ -93,7 +93,6 @@ const AuthState = props => {
     //Add vehicle to user's 'garage'
 
     const saveVehicle = async (vehicleId, userId) => {
-        console.log(userId)
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -106,7 +105,6 @@ const AuthState = props => {
 
         try {
             const res = await axios.put('api/users/', formData, config);
-            console.log(res);
             dispatch({
                 type: SAVE_CAR,
                 payload: res.data

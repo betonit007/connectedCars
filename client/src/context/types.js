@@ -17,3 +17,5 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const CAR_ERROR = 'CAR_ERROR';
 export const SAVE_CAR = 'SAVE_CAR';
+export const CAR_PICKED = 'CAR_PICKED';
+export const CAR_UNPICKED = 'CAR_UNPICKED';

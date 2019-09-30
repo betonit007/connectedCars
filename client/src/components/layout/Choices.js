@@ -43,7 +43,7 @@ const Choices = () => {
 						<div className='justify-center'>
 							<div className='sm:text-3xl md:text-5xl'>Browse our extensive inventory</div>
 							
-					          <Link className='text-xl flex justify-center bg-blue-500 w-1/3 m-auto rounded' to='/cars'>Shop Now!</Link>
+					          <Link className='text-xl flex justify-center bg-blue-500 w-2/3 sm:w-1/3 md:w-1/4 m-auto rounded' to='/cars'>Shop Now!</Link>
 							
 						</div>
 					  )

@@ -8414,8 +8414,11 @@ video {
 
 @media (max-width: 640px) {
   .grid {
-    display: block;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
   }
 
   .customHeight {
