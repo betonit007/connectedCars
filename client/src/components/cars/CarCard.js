@@ -27,7 +27,7 @@ const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved, carPicke
         </div>
         <div className="w-full flex justify-around">
           {renderSavedButton()}
-          <button onClick={()=>carPicked()}>Pick</button>
+          <button onClick={()=>carPicked(carId)}>Pick</button>
         </div>
       </div>
     </div>

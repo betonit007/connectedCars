@@ -139,4 +139,14 @@
 
   .modal {
     background: rgba(0, 0, 0, .7);
+    position: fixed;
+  }
+
+  .modalVport {
+    height: 95vh;
+    width: 85vh;
+  }
+
+  .rotate180 {
+    transform: rotate(180deg);
   }

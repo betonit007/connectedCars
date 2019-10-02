@@ -35,7 +35,7 @@ export default (state, action) => {
             return {
                 ...state,
                 carSelected: true,
-                carInfo: action.payload
+                carInfo: state.cars.filter(car => car._id === action.payload)
             }
         case CAR_UNPICKED:
             return {

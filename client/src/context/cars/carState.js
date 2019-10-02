@@ -18,7 +18,8 @@ const CarState = props => {
         current: null,
         filtered: null,
         error: null,
-        carClicked: false
+        carClicked: false,
+        carInfo: null,
     };
     
     const [state, dispatch] = useReducer(carReducer, initialState);
@@ -39,11 +40,11 @@ const CarState = props => {
     }
 
     const carPicked = carInfo => {
-        dispatch({ type: CAR_PICKED, payload: 'test' })
+        dispatch({ type: CAR_PICKED, payload: carInfo })
     }
 
     const carUnPicked = () => {
-        dispatch({ type: CAR_UNPICKED, payload: 'test' })
+        dispatch({ type: CAR_UNPICKED })
     }
 
     const filterCars = text => {
@@ -66,7 +67,8 @@ const CarState = props => {
             clearFilter,
             carPicked,
             carUnPicked,
-            carSelected: state.carSelected
+            carSelected: state.carSelected,
+            carInfo: state.carInfo
         }}
       >
           {props.children}

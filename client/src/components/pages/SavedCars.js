@@ -11,7 +11,7 @@ const HomeCars = () => {
     const carContext = useContext(CarContext);
     const authContext = useContext(AuthContext);
     const { saveVehicle, user, saved } = authContext;
-    const { cars } = carContext;
+    const { cars, carPicked, carSelected } = carContext;
     console.log(saved);
     console.log(carContext);
 
@@ -22,7 +22,7 @@ const HomeCars = () => {
 
     return (
         <Fragment>
-            {false && <Modal />}
+            {carSelected && <Modal />}
             <div className="flex flex-wrap justify-center">
                 {!cars ? <Spinner /> :
                     (
@@ -36,6 +36,7 @@ const HomeCars = () => {
                                     carId={car._id}
                                     saveVehicle={saveVehicle}
                                     saved={saved ? saved.indexOf(car._id) > -1 : false}
+                                    carPicked={carPicked}
                                 />
                             )
                         )
