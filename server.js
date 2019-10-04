@@ -19,7 +19,7 @@ app.use('/api/cars', require('./routes/cars'));
 
 if(process.env.NODE_ENV ===  'production') {
     //Set static folder
-    app.use(express.satic('client/build'))
+    app.use(express.static('client/build'))
 }
 
 
