@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
-//const config = require('config');
-//const db = config.get('mongoURI'); // get connet info from global vars stored in default.json or productions.json
+const config = require('config');
+const db = config.get('mongoURI'); // get connet info from global vars stored in default.json or productions.json
+console.log(db)
 
 const connectDB = async () => {
-    mongoose.connect("mongodb://localhost/connectedCars", {
+    mongoose.connect(db, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: true

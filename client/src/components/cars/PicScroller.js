@@ -2,11 +2,11 @@ import React, { useState }from 'react';
 import arrow from '../layout/img/rightArrow.png';
 
 const PicScroller = (pics) => {
-
+    
     const [picPosition, setPicPosition] = useState(0)
 
     const togglePicUp = () => {
-        console.log('clicked')
+        
         if (pics.pics[picPosition + 1]) {
             setPicPosition(picPosition + 1)
         } else { setPicPosition(0)};
@@ -16,7 +16,7 @@ const PicScroller = (pics) => {
         if (picPosition !== 0) {
             setPicPosition(picPosition - 1)
         } else if (picPosition === 0) {
-            setPicPosition((pics.length - 1));
+            setPicPosition((pics.pics.length - 1));
         }
         else { setPicPosition(0)};
     }

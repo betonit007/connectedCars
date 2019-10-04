@@ -1,12 +1,16 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import CarContext from '../../context/cars/carContext';
 
-
 const CarSearch = () => {
+
+    useEffect(() => {
+        clearFilter();
+    },[])
+    
     const carContext = useContext(CarContext);
     const text = useRef('');
 
-    const { filterCars, clearFilter, filtered } = carContext;
+    const { filterCars, clearFilter } = carContext;
 
     const onChange = e => {
         if (text.current.value !== '') {

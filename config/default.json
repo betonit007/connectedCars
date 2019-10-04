@@ -1,4 +1,4 @@
 {
-    "mongURI": "mongodb://localhost/connectedCars",
+    "mongoURI": "mongodb+srv://betonit007:Nyjets$41@connectedcars-1ukv3.mongodb.net/ConnectedCars?retryWrites=true&w=majority",
     "jwtSecret": "secret"
 }
