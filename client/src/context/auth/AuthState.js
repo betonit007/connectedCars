@@ -93,6 +93,7 @@ const AuthState = props => {
     //Add vehicle to user's 'garage'
 
     const saveVehicle = async (vehicleId, userId) => {
+        console.log(vehicleId);
         const config = {
             headers: {
                 'Content-Type': 'application/json'

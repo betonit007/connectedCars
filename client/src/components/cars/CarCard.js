@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved, carPicked }) => {
+const CarCard = ({ carDesc, carPhotos, carId, carPicked }) => {
 
-  const renderSavedButton = () => {
-    if (!user) {
-      return null
-    }
-    else if (saved) {
-      return <button>Saved</button>
-    }
-    else return <button onClick={() => saveVehicle(carId, user)}>Save Car</button>
-  }
-
+  
   return (
 
-    <div className="bg-white rounded m-2 overflow-hidden shadow-xl md:max-w-xs">
+    <div onClick={()=>carPicked(carId)} className="cursor-pointer border border-gray-400 shadow-xl bg-white rounded m-2 hover:shadow-outline overflow-hidden md:max-w-xs">
       <div className="overflow-hidden md:h-56 m-auto">
         <img src={carPhotos[0]} alt={carDesc}/>
       </div>
@@ -24,10 +15,6 @@ const CarCard = ({ carDesc, carPhotos, user, saveVehicle, carId, saved, carPicke
           <p className="text-gray-700 text-base">
             {carDesc}
           </p>
-        </div>
-        <div className="w-full flex justify-around">
-          {renderSavedButton()}
-          <button onClick={()=>carPicked(carId)}>Pick</button>
         </div>
       </div>
     </div>
