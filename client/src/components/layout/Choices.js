@@ -7,10 +7,11 @@ import research from './img/research.jpg';
 import cleanFront from './img/cleanfront.jpg';
 
 const Choices = () => {
+	 
+	
 
-
-	const [choices, setChoice] = useState({
-		choice: Math.floor(Math.random() * 3) + 1
+	const [choices, setChoice] = useState({ 
+		choice:1
 	})
 
 	let { choice } = choices;

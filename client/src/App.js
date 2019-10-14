@@ -26,7 +26,7 @@ const App = () => {
                 <Switch>
                   <Route exact path='/' component={Home} />
                   <Route exact path='/cars' component={Cars}/>
-                  <PrivateRoute exact path='/saved' component={SavedCars} />z
+                  <PrivateRoute exact path='/saved' component={SavedCars} />
                     <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
                 </Switch>
