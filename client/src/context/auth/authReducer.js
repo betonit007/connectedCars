@@ -7,7 +7,9 @@ import {
     LOGOUT,
     CLEAR_ERRORS,
     LOGIN_SUCCESS,
-    SAVE_CAR
+    SAVE_CAR,
+    UNSAVE_CAR,
+    SET_LOADING
 } from '../types';
 
 export default (state, action) => {
@@ -20,6 +22,12 @@ export default (state, action) => {
                 user: action.payload,
                 saved: action.payload.savedCars
             }
+        case UNSAVE_CAR:
+                return {
+                    ...state,
+                    loading: false,
+                    saved: state.saved.filter(car => car !== action.payload)
+                }
         case SAVE_CAR:
             return {
                 ...state,
@@ -53,6 +61,11 @@ export default (state, action) => {
             return {
                 ...state,
                 error: null
+            }
+        case SET_LOADING:
+            return {
+                ...state,
+                loading: true
             }
         default:
             return state;

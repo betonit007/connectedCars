@@ -12,7 +12,9 @@ import {
     LOGIN_FAIL,
     LOGOUT,
     CLEAR_ERRORS,
-    SAVE_CAR
+    SAVE_CAR,
+    UNSAVE_CAR,
+    SET_LOADING
 } from '../types';
 
 const AuthState = props => {
@@ -93,6 +95,7 @@ const AuthState = props => {
     //Add vehicle to user's 'garage'
 
     const saveVehicle = async (vehicleId, userId) => {
+        setLoading();
         const config = {
             headers: {
                 'Content-Type': 'application/json'
@@ -114,6 +117,34 @@ const AuthState = props => {
         }
     }
 
+    const unSaveVehicle = (vehicleId, userId) => {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const formData = {
+            vehicleId,
+            userId
+        }
+
+        try {
+            axios.patch('api/users/', formData, config);
+            dispatch({
+                type: UNSAVE_CAR,
+                payload: vehicleId
+            })
+        } catch (err) {
+            console.log('UNSAVE VEHICLE ERROR', err);
+        }
+    }
+
+    const setLoading = () => {
+       dispatch({
+           type: SET_LOADING
+       })
+    }
+
     //Logout
     const logout = () => dispatch({ type: LOGOUT });
 
@@ -133,10 +164,11 @@ const AuthState = props => {
                 register,
                 loadUser,
                 saveVehicle,
+                unSaveVehicle,
                 login,
                 logout,
                 clearErrors,
-                saved: state.saved
+                saved: state.saved,
             }}
         > {props.children}
         </AuthContext.Provider>

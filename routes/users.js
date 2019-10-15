@@ -63,7 +63,6 @@ router.post('/', [
 
 router.put('/', auth, async (req, res) => {   //PUT route since we're just updating the users saved cars
     const { vehicleId, userId } = req.body
-    console.log(userId)
     try {
         
         let car = await Car.findById(vehicleId); // make sure that the car actually exists
@@ -73,6 +72,27 @@ router.put('/', auth, async (req, res) => {   //PUT route since we're just updat
 
         user = await User.findByIdAndUpdate(userId, 
             { "$push": { savedCars: vehicleId } }, {new: true})// new:true sends back updated value
+            res.json(user);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+})
+
+    // @route    UPDATE api/users
+    // @desc     Remove saved vehicle to inventory
+    // @access   Private
+
+    router.patch('/', auth, async (req, res) => {   //PATCH route since we're just removing car id from savedcars array
+    const { vehicleId, userId } = req.body
+    try {
+        
+        let saved = await User.findById(userId);
+        if(!saved.savedCars.includes(vehicleId)) return res.status(400).json({msg: "Car does not exist in user inventory"}); //check to make sure car is in inventory
+
+        user = await User.updateOne({_id: userId}, 
+            { "$pullAll": { savedCars: [vehicleId] } }, {new: true})// new:true sends back updated value
             res.json(user);
 
     } catch (err) {

@@ -19,3 +19,5 @@ export const CAR_ERROR = 'CAR_ERROR';
 export const SAVE_CAR = 'SAVE_CAR';
 export const CAR_PICKED = 'CAR_PICKED';
 export const CAR_UNPICKED = 'CAR_UNPICKED';
+export const UNSAVE_CAR = 'UNSAVE_CAR';
+export const SET_LOADING = 'SET_LOADING';

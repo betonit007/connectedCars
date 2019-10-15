@@ -12,8 +12,6 @@ const HomeCars = () => {
     const authContext = useContext(AuthContext);
     const { saveVehicle, user, saved } = authContext;
     const { cars, carPicked, carSelected } = carContext;
-    console.log(saved);
-    console.log(carContext);
 
     useEffect(() => {
         authContext.loadUser();

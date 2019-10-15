@@ -11,7 +11,7 @@ const Modal = () => {
     const carContext = useContext(CarContext);
     const authContext = useContext(AuthContext);
     const { carUnPicked, carInfo } = carContext;
-    const { saved, saveVehicle, user } = authContext;
+    const { saved, saveVehicle, user, unSaveVehicle, loading } = authContext;
   
 
     return ReactDOM.createPortal(
@@ -24,8 +24,10 @@ const Modal = () => {
                                  pics={carInfo[0].photos} 
                                  saved={saved}
                                  saveVehicle={saveVehicle}
+                                 unSaveVehicle = {unSaveVehicle}
                                  carInfo={carInfo}
                                  user = {user}
+                                 loading = {loading}
                                 /> 
                                 :
                                 <span>Loading....</span>
