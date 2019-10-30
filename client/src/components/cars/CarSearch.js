@@ -3,14 +3,15 @@ import CarContext from '../../context/cars/carContext';
 
 const CarSearch = () => {
 
-    useEffect(() => {
-        clearFilter();
-    },[])
-    
     const carContext = useContext(CarContext);
     const text = useRef('');
 
     const { filterCars, clearFilter } = carContext;
+
+    useEffect(() => {
+        clearFilter();
+    },[])
+
 
     const onChange = e => {
         if (text.current.value !== '') {

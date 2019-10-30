@@ -1,16 +1,16 @@
-import React from 'react'
-  
+import React from 'react';
+import CarDesc from './CarDesc';
+
 const CarInfo = ({ carInfo:[carInfo] }) => {
-    console.log(carInfo)
-
-
-    return ( 
-            <div>
-              <h3 className='text-lg'>
-                  {carInfo.fullDesc}
-              </h3>
-            </div>
-    )
+  
+  return (
+    <div className="w-full">
+      <h3 className='text-lg text-center'>
+        {carInfo.fullDesc}
+      </h3>
+      <CarDesc {...carInfo}/>
+    </div>
+  )
 }
 
 export default CarInfo

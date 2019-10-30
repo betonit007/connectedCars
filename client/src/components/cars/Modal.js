@@ -33,7 +33,7 @@ const Modal = () => {
                                 <span>Loading....</span>
                     }
                 </div>
-                <div className='bg-gray-300 h-64 flex justify-center'>
+                <div className='bg-gray-400 h-64 flex justify-center'>
                   <CarInfo
                     carInfo={carInfo}
                   />

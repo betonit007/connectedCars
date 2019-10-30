@@ -21,3 +21,4 @@ export const CAR_PICKED = 'CAR_PICKED';
 export const CAR_UNPICKED = 'CAR_UNPICKED';
 export const UNSAVE_CAR = 'UNSAVE_CAR';
 export const SET_LOADING = 'SET_LOADING';
+export const ADD_FAIL = 'ADD_FAIL';

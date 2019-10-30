@@ -11,6 +11,7 @@ import SavedCars from './components/pages/SavedCars';
 import CarState from './context/cars/carState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
+import CreateCar from './components/pages/CreateCar';
 
 const App = () => {
   return (
@@ -27,7 +28,8 @@ const App = () => {
                   <Route exact path='/' component={Home} />
                   <Route exact path='/cars' component={Cars}/>
                   <PrivateRoute exact path='/saved' component={SavedCars} />
-                    <Route exact path='/register' component={Register} />
+                  <PrivateRoute exact path='/create' component={CreateCar} />
+                  <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
                 </Switch>
               </div>

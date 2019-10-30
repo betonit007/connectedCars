@@ -9,7 +9,8 @@ import {
     CAR_ERROR,
     GET_CARS,
     CAR_PICKED,
-    CAR_UNPICKED
+    CAR_UNPICKED,
+    ADD_FAIL
 } from '../types';
 
 const CarState = props => {
@@ -39,6 +40,29 @@ const CarState = props => {
         }
     }
 
+    //Create Car 
+    const createCar = async (car, arrayPhotos) => {
+
+        try {
+            console.log(arrayPhotos);
+            car = {...car, photos: arrayPhotos };
+            console.log(car);
+             const res = await axios.post('/api/cars', car);
+             console.log(res);
+            // dispatch({
+            //     type: ADD_CAR,
+            //     payload: res.data
+            // })
+            
+        } catch (err) {
+            console.error('Create Car Error: ', err)
+            dispatch({
+                type: ADD_FAIL,
+                payload: err.response.data.msg
+            })
+        }
+    }
+
     const carPicked = carInfo => {
         dispatch({ type: CAR_PICKED, payload: carInfo })
     }
@@ -62,6 +86,7 @@ const CarState = props => {
             current: state.current,
             filtered: state.filtered,
             error: state.error,
+            createCar,
             getCars,
             filterCars,
             clearFilter,
