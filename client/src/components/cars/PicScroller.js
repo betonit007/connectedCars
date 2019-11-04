@@ -30,7 +30,7 @@ const PicScroller = ({ pics, carUnPicked, user, saved, saveVehicle, unSaveVehicl
           return <div className='h-16 w-16 mb-16'><Spinner /></div>
         }
         else if (carInfo._id && saved.indexOf(carInfo._id) !== -1) {
-          return <button onClick={()=>unSaveVehicle(carInfo._id, user._id)} className="bg-indigo-300 hover:bg-indigo-700 text-white font-bold p-2 h-12 w-24 mb-16 rounded">Unsave</button>
+          return <button onClick={()=>unSaveVehicle(carInfo._id && carInfo._id, user._id && user._id)} className="bg-indigo-300 hover:bg-indigo-700 text-white font-bold p-2 h-12 w-24 mb-16 rounded">Unsave</button>
         }
         else return <button className="bg-indigo-300 hover:bg-indigo-700 text-white font-bold p-2 h-12 w-24 mb-16 rounded"onClick={() => saveVehicle(carInfo._id, user._id)} >
                       Save Car

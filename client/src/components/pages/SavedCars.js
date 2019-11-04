@@ -1,7 +1,6 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import CarContext from '../../context/cars/carContext';
 import AuthContext from '../../context/auth/authContext';
-import CarSearch from '../cars/CarSearch';
 import CarCard from '../cars/CarCard';
 import Modal from '../cars/Modal';
 

@@ -49,7 +49,7 @@ const Cars = () => {
         {!cars ? <Spinner /> :
           (
             !filtered ?
-              shuffle(cars).slice(0, 25).map(car => //shuffle array and return the first 25 cars
+              cars.slice(0).reverse().map(car => //shuffle array and return the first 25 cars
                 (
                   <CarCard
                     key={car._id}
@@ -65,7 +65,7 @@ const Cars = () => {
               )
               :
               (
-                filtered.slice(0, 25).map(car => (
+                filtered.map(car => (
                   <CarCard
                     key={car._id}
                     carDesc={car.fullDesc}

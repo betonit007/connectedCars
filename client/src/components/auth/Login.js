@@ -58,7 +58,7 @@ const Login = props => {
           />
         </div>
         <div className='mb-4'>
-          <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='email'>Email</label>
+          <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='email'>Password</label>
           <input className='shadow appearance-none border-rounded w-full'
             type='password'
             name='password'

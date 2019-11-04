@@ -19,6 +19,20 @@
   * @import "tailwindcss/components";
   */
  @tailwind components;
+
+ .btn-blue {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+}
+.btn-blue:hover {
+  @apply bg-blue-700;
+}
+
+.btn-gray {
+  @apply bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded;
+}
+.btn-gray:hover {
+  @apply bg-gray-500;
+}
  
  /**
   * Here you would add any of your custom component classes; stuff that you'd
@@ -61,7 +75,9 @@
   * @import "utilities/skew-transforms";
   */
 
-
+  
+/* Using @apply to create a custom button to use throughout app */
+  
 /* CSS GRID SETUP UP TO MATCH SAME BREAK POINTS OF DEFAULT TAILWIND BREAKPOINTS*/
 @media (max-width: 640px) {
     .grid {

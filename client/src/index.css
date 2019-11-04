@@ -630,6 +630,36 @@ video {
   }
 }
 
+.btn-blue {
+  background-color: #4299e1;
+  color: #fff;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.25rem;
+}
+
+.btn-blue:hover {
+  background-color: #2b6cb0;
+}
+
+.btn-gray {
+  background-color: #cbd5e0;
+  color: #2d3748;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.25rem;
+}
+
+.btn-gray:hover {
+  background-color: #a0aec0;
+}
+
 /**
   * Here you would add any of your custom component classes; stuff that you'd
   * want loaded *before* the utilities so that the utilities could still
@@ -8409,6 +8439,8 @@ video {
   * @import "utilities/background-patterns";
   * @import "utilities/skew-transforms";
   */
+
+/* Using @apply to create a custom button to use throughout app */
 
 /* CSS GRID SETUP UP TO MATCH SAME BREAK POINTS OF DEFAULT TAILWIND BREAKPOINTS*/
 
