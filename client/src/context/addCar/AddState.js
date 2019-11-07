@@ -49,8 +49,8 @@ const AddState = props => {
                 const data = new FormData();
                 data.append("file", photo);
                 data.append("upload_preset", "reserve");
-                data.append("cloud_name", REACT_APP_CLOUDINARY_PRESET);
-                const response = await axios.post(REACT_APP_CLOUDINARY_URL, data);
+                data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_PRESET);
+                const response = await axios.post(process.env.REACT_APP_CLOUDINARY_URL, data);
                 cloudinaryUrls.push(response.data.url);
                 console.log('response of cloudinay', cloudinaryUrls);
             } catch (error) {
