@@ -28,7 +28,6 @@ const CarSchema = mongoose.Schema({
   },
   cylinder: {
     type: Number,   // TODO: validate number is between 0 and 12; 0 indicating electric vehicle
-    require: true
   },
   displacement: {
     type: Number,
@@ -48,6 +47,14 @@ const CarSchema = mongoose.Schema({
   },
   drive: {
     type: String,  // TODO: validate 2WD, AWD or 4WD
+    require: true
+  },
+  transmission: {
+    type: String,
+    require: true
+  },
+  trim: {
+    type: String,
     require: true
   },
   // buyDate: {

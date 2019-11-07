@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
-const CarCard = ({ carDesc, carPhotos, carId, carPicked }) => {
-
+const CarCard = ({ car, carPicked }) => {
+  console.log(car);
   
   return (
 
-    <div onClick={()=>carPicked(carId)} className="cursor-pointer border border-gray-400 shadow-xl bg-white rounded m-2 hover:shadow-outline overflow-hidden md:max-w-xs">
-      <div className="overflow-hidden md:h-56 m-auto">
-        <img src={carPhotos[0]} alt={carDesc}/>
+    <div onClick={()=>carPicked(car._id)} className="cursor-pointer border border-gray-400 shadow-xl bg-white rounded m-2 hover:shadow-outline overflow-hidden md:max-w-xs">
+      <div >
+        <img className="h-full w-full" src={car.photos[0]} alt={car.fullDesc}/>
       </div>
-      <div className="bg-gray-300 h-full">
-        <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{carDesc}</div>
-          <p className="text-gray-700 text-base">
-            {carDesc}
-          </p>
+      <div className="bg-gray-300 h-full w-full">
+        <div className="px-3 py-2">
+          <div className='text-gray-600 flex'>
+            <div className='pr-1'>{car.year}</div><div>{car.make}</div>
+          </div>
+          <div className='text-gray-600 flex'>
+            <div className='pr-1'>{car.model}</div>
+          </div>
+          <div className='text-gray-600'></div>
+          <div className='text-gray-600'></div>
         </div>
       </div>
     </div>

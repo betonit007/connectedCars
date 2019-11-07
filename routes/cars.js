@@ -11,7 +11,7 @@ const Car = require('../models/Car');
 
 router.get('/', async (req, res) => {
     try {
-        const allCars = await Car.find({}) 
+        const allCars = await Car.find({}).sort('-stockNo') //sort by highest stock number first (newest cars)
         res.json(allCars);
     } catch (err) {
         console.error(err.message);
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
      
-    const { fullDesc, stockNo, year, make, model, color, cylinder, displacement, mileage, bodyType, secondDesc, options, photos} = req.body;
+    const { fullDesc, stockNo, year, make, model, color, cylinder, displacement, mileage, bodyType, secondDesc, options, photos, trim} = req.body;
     
     
     const newCar = new Car({
@@ -37,7 +37,8 @@ router.post('/', async (req, res) => {
         bodyType,
         secondDesc,
         options,
-        photos 
+        photos,
+        trim
     })
 
     try {

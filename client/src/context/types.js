@@ -25,3 +25,5 @@ export const ADD_FAIL = 'ADD_FAIL';
 export const CREATE_MODAL = 'CREATE_MODAL';
 export const RECIEVE_INPUT = 'RECIEVE_INPUT';
 export const UPDATE_CAR='UPDATE_CAR';
+export const CHANGE_PAGE='CHANGE_PAGE';
+export const NUM_CARS='NUM_CARS';

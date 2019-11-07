@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 import setAuthToken from '../../utils/setAuthToken';
 import CarContext from './carContext';
@@ -13,7 +13,9 @@ import {
     CAR_UNPICKED,
     ADD_FAIL,
     CREATE_MODAL,
-    UPDATE_CAR
+    UPDATE_CAR,
+    CHANGE_PAGE,
+    NUM_CARS
 } from '../types';
 
 const CarState = props => {
@@ -24,10 +26,14 @@ const CarState = props => {
         error: null,
         carSelected: false,
         carInfo: null,
-        createModal: false
+        createModal: false,
+        currentPage: 1,
+        carsPerPage: 10,
     };
     
     const [state, dispatch] = useReducer(carReducer, initialState);
+
+   
 
     // Get Cars
 
@@ -89,6 +95,53 @@ const CarState = props => {
         } 
     }
 
+    const changePage = page => {
+        console.log('cars length',state.cars.length / state.carsPerPage)
+        console.log('currentPage', state.currentPage)
+        if (page === 'increment') {
+            if (state.currentPage < state.cars.length / state.carsPerPage) {
+                dispatch({
+                    type: CHANGE_PAGE,
+                    payload: state.currentPage + 1
+                })
+            }
+        }
+        else if (page === 'decrement') {
+            if (state.currentPage !== 1) {
+                dispatch({
+                    type: CHANGE_PAGE,
+                    payload: state.currentPage - 1
+                })
+            }
+        }
+        else if (Number.isInteger(page)) {
+            dispatch({
+                type: CHANGE_PAGE,
+                payload: page
+            })
+        }
+    }
+
+    const changeCarsPerPage = (width) => {
+        switch(true) {
+            case width > 1280:
+              dispatch({ type: NUM_CARS, payload: 10 })
+              break;
+            case (width < 1280 && width > 1024):
+              dispatch({ type: NUM_CARS, payload: 8 })
+              break;
+            case (width < 1024 && width > 768):
+              dispatch({ type: NUM_CARS, payload: 9 })
+              break;
+            case (width < 768):
+              dispatch({ type: NUM_CARS, payload: 10 })
+              break;
+            default:
+              dispatch({ type: NUM_CARS, payload: 10 })
+        }
+        
+    }
+
     
     const carPicked = carInfo => {
         dispatch({ type: CAR_PICKED, payload: carInfo })
@@ -99,6 +152,7 @@ const CarState = props => {
     }
 
     const filterCars = text => {
+        console.log(text.length);
         dispatch({ type: FILTER_CARS, payload: text })
     }
 
@@ -127,7 +181,12 @@ const CarState = props => {
             carInfo: state.carInfo,
             triggerCreateModal,
             updatePhotoArray,
-            createModal: state.createModal
+            changePage,
+            changeCarsPerPage,
+            createModal: state.createModal,
+            currentPage: state.currentPage,
+            carsPerPage: state.carsPerPage,
+            indexOfLastPost: (state.currentPage * state.carsPerPage)
         }}
       >
           {props.children}

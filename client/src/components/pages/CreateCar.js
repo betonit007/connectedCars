@@ -15,22 +15,31 @@ const CreateCar = (props) => {
   const addContext = useContext(AddContext);
 
   const { isAuthenticated } = authContext;
-  const { createCar } = carContext;
+  const { createCar, cars } = carContext;
   const { handleInput, onSubmit } = addContext;
 
   const [loading, setLoading] = useState(false);
   const [createModal, setCreateModal] = useState(null);
+  const [nextStockNum, setNextStockNum] = useState(null);
 
   useEffect(() => {
     if (!isAuthenticated) {
       props.history.push('/');
     }
+    let nextStockNum = cars.reduce((acc, car) => {
+      console.log(car.stockNo);
+      if (car.stockNo > acc) {
+        return car.stockNo
+      } else return acc
+    }, 0)
+    setNextStockNum(nextStockNum + 1);
   }, [])
 
   const handleAddCar = async (e) => {
     e.preventDefault();
     setLoading(true);
     let allCarData = await onSubmit();
+    allCarData.stockNo = nextStockNum
     let res = await createCar(allCarData);
     console.log('car created', res);
     setLoading(false);
@@ -67,16 +76,6 @@ const CreateCar = (props) => {
             />
           </div>
           <div className='flex secondRow'>
-            <div className='mb-4 w-full md:w-1/3'>
-              <label className='block text-gray-700 text-sm font-bold mb-2 text-center' >Stock Number</label>
-              <input className='shadow appearance-none border-rounded w-full'
-                type='number'
-                name='stockNo'
-                value={addContext.stockNo}
-                onChange={handleInput}
-                required
-              />
-            </div>
             <div className='mb-4 w-full md:w-1/3 ml-2'>
               <label className='block text-gray-700 text-sm font-bold mb-2 text-center' >Year</label>
               <input className='shadow appearance-none border-rounded w-full'
@@ -98,8 +97,6 @@ const CreateCar = (props) => {
                 required
               />
             </div>
-          </div>
-          <div className='flex thirdRow'>
             <div className='mb-4 w-full md:w-1/3'>
               <label className='block text-gray-700 text-sm font-bold mb-2 text-center' >Model</label>
               <input className='shadow appearance-none border-rounded w-full'
@@ -107,6 +104,17 @@ const CreateCar = (props) => {
                 name='model'
                 value={addContext.model}
                 onChange={handleInput}
+                required
+              />
+            </div>
+          </div>
+          <div className='flex thirdRow'>
+            <div className='mb-4 w-full md:w-1/3'>
+              <label className='block text-gray-700 text-sm font-bold mb-2 text-center' >Transmission</label>
+              <input className='shadow appearance-none border-rounded w-full'
+                type='text'
+                name='transmission'
+                defaultValue={handleInput}
                 required
               />
             </div>
@@ -123,11 +131,11 @@ const CreateCar = (props) => {
             </div>
 
             <div className='mb-4 w-full md:w-1/3 ml-2'>
-              <label className='block text-gray-700 text-sm font-bold mb-2 text-center' >Cylinder</label>
+              <label className='block text-gray-700 text-sm font-bold mb-2 text-center' >Trim</label>
               <input className='shadow appearance-none border-rounded w-full'
-                type='number'
-                name='cylinder'
-                value={addContext.cylinder}
+                type='text'
+                name='trim'
+                value={addContext.trim}
                 onChange={handleInput}
                 required
               />

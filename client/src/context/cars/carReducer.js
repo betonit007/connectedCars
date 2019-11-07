@@ -7,7 +7,9 @@ import {
     CAR_UNPICKED,
     ADD_CAR,
     CREATE_MODAL,
-    UPDATE_CAR
+    UPDATE_CAR,
+    CHANGE_PAGE,
+    NUM_CARS
 } from '../types';
 
 export default (state, action) => {
@@ -33,6 +35,7 @@ export default (state, action) => {
                 })
             }
         case UPDATE_CAR:
+            
             const newCarArray = state.cars.reduce((acc, car) => {
               if (action.payload._id !== car._id) {
                   return {...acc, car}
@@ -65,6 +68,17 @@ export default (state, action) => {
             return {
                 ...state,
                 createModal: action.payload
+            }
+        case CHANGE_PAGE:
+            return {
+                ...state,
+                currentPage: action.payload
+            }
+        case NUM_CARS:
+            console.log('action', action.payload)
+            return {
+                ...state,
+                carsPerPage: action.payload
             }
         default:
             return state;

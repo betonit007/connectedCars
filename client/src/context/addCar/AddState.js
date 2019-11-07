@@ -1,18 +1,17 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import AddContext from './addContext';
 import addReducer from './addReducer';
 import setAuthToken from '../../utils/setAuthToken';
 import {
-    RECIEVE_INPUT,
-    ADD_CAR,
-    ADD_FAIL
+    RECIEVE_INPUT
 } from '../types';
 
 const AddState = props => {
 
     const initialState = {
         fullDesc: '',
+        transmission: '',
         stockNo: '',
         year: 2015,
         make: '',
@@ -23,6 +22,7 @@ const AddState = props => {
         mileage: "",
         bodyType: '',
         secondDesc: '',
+        trim: '',
         options: [],
         photos: [],
         mediaUrls: [],
