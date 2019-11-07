@@ -27,10 +27,8 @@ const HomeCars = () => {
                             (
                                 <CarCard
                                     key={car._id}
-                                    carDesc={car.fullDesc}
-                                    carPhotos={car.photos}
+                                    car={car}
                                     user={user && user._id}
-                                    carId={car._id}
                                     saveVehicle={saveVehicle}
                                     saved={saved ? saved.indexOf(car._id) > -1 : false}
                                     carPicked={carPicked}
