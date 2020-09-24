@@ -20,7 +20,7 @@ import {
 
 const CarState = props => {
     const initialState = {
-        cars: null,
+        cars: [],
         current: null,
         filtered: null,
         error: null,

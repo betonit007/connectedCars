@@ -14,7 +14,9 @@
   "author": "Tim Nagorski",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/secret-manager": "^3.2.0",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.23.0",
     "config": "^3.2.2",
     "express": "^4.17.1",
     "express-validator": "^6.2.0",
