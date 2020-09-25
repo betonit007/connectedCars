@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const CarCard = ({ car, carPicked }) => {
-  console.log(car);
   
   return (
 

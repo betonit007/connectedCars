@@ -40,7 +40,7 @@ const CarState = props => {
     const getCars = async () => {
         try {
             const res = await axios.get('/api/cars');
-            console.log(res);
+            
             dispatch({ type: GET_CARS, payload: res.data })
         } catch (err) {
             dispatch({
@@ -152,7 +152,7 @@ const CarState = props => {
     }
 
     const filterCars = text => {
-        console.log(text.length);
+        
         dispatch({ type: FILTER_CARS, payload: text })
     }
 

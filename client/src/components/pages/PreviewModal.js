@@ -1,13 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import CreatePicScroller from './CreatePicScroller';
-import CarContext from '../../context/cars/carContext';
 
 
 const PreviewModal = ({ car, setCreateModal, history }) => {
-    console.log(car)
-    const carContext = useContext(CarContext);
-    const { triggerCreateModal } = carContext;
+
 
     return ReactDOM.createPortal(
         <div className='absolute flex items-center bg-black justify-center top-0 right-0 bottom-0 left-0 w-full h-full modal'>

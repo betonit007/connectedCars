@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const cloudinary = require('cloudinary')
 const config = require('config');
 const auth = require('../middleware/auth'); //bring in to verify token
+const admin = require('../middleware/admin'); //bring in to verify admin priveleges
 
 const { check, validationResult } = require('express-validator');
 
@@ -20,28 +21,13 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/', auth, async (req, res) => {
+router.post('/', admin, async (req, res) => {
      
-    const { fullDesc, stockNo, year, make, model, color, cylinder, displacement, mileage, bodyType, secondDesc, options, photos, trim} = req.body;
+    const { fullDesc, stockNo, year, make} = req.body;
     
-
+    if (!fullDesc || !stockNo || !year || !make) return res.status(500).send(`Server Error, Unable to add car to inventory`);
     
-    const newCar = new Car({
-        fullDesc,
-        stockNo,
-        year,
-        make,
-        model,
-        color,
-        cylinder,
-        displacement,
-        mileage,
-        bodyType,
-        secondDesc,
-        options,
-        photos,
-        trim
-    })
+    const newCar = new Car(req.body)
 
     try {
         const newCarAdded = await newCar.save();
@@ -76,7 +62,7 @@ cloudinary.config({
 })
 
 //upload endpoint
-router.post('/uploadimages', auth, (req, res) => {
+router.post('/uploadimages', admin, (req, res) => {
     cloudinary.uploader.upload(
         req.body.image,
         (result) => {
@@ -94,9 +80,9 @@ router.post('/uploadimages', auth, (req, res) => {
 });
 
 // remove image
-router.post('/removeimage', auth, (req, res) => {
+router.post('/removeimage', admin, (req, res) => {
     let image_id = req.body.public_id
-    console.log(image_id)
+   
     cloudinary.uploader.destroy(image_id, (error, result) => {
         if (error) {
             console.log(error)
