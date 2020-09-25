@@ -25,9 +25,9 @@ const Navbar = props => {
       <li className='text-white pr-5'>
         <div className="flex"><UserIcon/>{user && user.name}</div>
       </li>
-      <li className='text-white pr-5'>{props.location.pathname !== '/saved' ? (<><Link to='/saved'>Saved Cars</Link>{' | '}<Link to='/create'>Create Car</Link></>) : <Link to='/cars'>Inventory</Link>}</li>
+      <li className='text-white pr-5'>{props.location.pathname !== '/saved' ? (<Link to='/saved'>Saved Cars</Link>) : <Link to='/cars'>Inventory</Link>}</li>
       <li>
-        <span onClick={onLogout} className="pr-5 text-white hover:cursor">Logout</span>
+        <span onClick={onLogout} className="pr-5 text-white cursor-pointer">Logout</span>
       </li>
     </ul>
   )

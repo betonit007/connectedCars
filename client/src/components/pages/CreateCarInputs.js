@@ -14,7 +14,7 @@ const CreateCarInputs = ({setCarInfo, carInfo}) => {
                 />
             </div>
             <div className='flex secondRow'>
-                <div className='mb-4 w-full md:w-1/3 ml-2'>
+                <div className='mb-4 w-full md:w-1/3'>
                     <label className='block text-gray-700 text-sm font-bold mb-2 text-center' >Year</label>
                     <input className='shadow appearance-none border-rounded w-full'
                         type='number'
@@ -35,7 +35,7 @@ const CreateCarInputs = ({setCarInfo, carInfo}) => {
                         required
                     />
                 </div>
-                <div className='mb-4 w-full md:w-1/3'>
+                <div className='mb-4 w-full md:w-1/3 ml-2'>
                     <label className='block text-gray-700 text-sm font-bold mb-2 text-center' >Model</label>
                     <input className='shadow appearance-none border-rounded w-full'
                         type='text'

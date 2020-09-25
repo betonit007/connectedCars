@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const cloudinary = require('cloudinary')
 const config = require('config');
-const auth = require('../middleware/auth'); //bring in to verify token
 const admin = require('../middleware/admin'); //bring in to verify admin priveleges
 
 const { check, validationResult } = require('express-validator');

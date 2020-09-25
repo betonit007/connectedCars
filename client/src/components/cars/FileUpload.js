@@ -75,32 +75,35 @@ const FileUpload = ({ picLoading, setPicLoading, images, setImages, user, single
     return (
         <>
             <div className="row">
-                <div className="col-md-8 m-auto">
+                <div className="col-md-8 m-auto flex flex-wrap">
                     {
                         images &&
-                        images.map(image => {
-                            console.log(image)
-                            return (
-                                <ImageMapper
-                                    key={image.public_id}
-                                    image={image}
-                                    deleteImage={deleteImage}
-                                />
-                            )
-                        }
-                        )}
+                        images.map(image =>
+                            <ImageMapper
+                                key={image.public_id}
+                                image={image}
+                                deleteImage={deleteImage}
+                            />
+                        )
+                    }
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-8 m-auto pt-2">
                     <label className='btn text-primary cursor-pointer'>
-                        {!picLoading ? "+ Add Image"
+                        {/* {!picLoading ? "+ Add Image"
                             :
                             <>
                                 <span className="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
                                 Uploading...
                             </>
-                        }
+                        } */}
+                        <div className="relative">
+                            {!picLoading ?
+                                <div className='absolute'>+ Add Image</div>
+                                :
+                                <div className="absolute loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-6 w-6 mb-2 ml-4"></div>}
+                        </div>
                         <input
                             disabled={picLoading}
                             hidden

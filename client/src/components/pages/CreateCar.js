@@ -37,9 +37,9 @@ const CreateCar = (props) => {
   const handleAddCar = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
+
     try {
-      carInfo.photos = images.map(image=> image.url)
+      carInfo.photos = images.map(image => image.url)
       carInfo.stockNo = nextStockNum
       let res = await createCar(carInfo);
       console.log(res)
@@ -48,7 +48,7 @@ const CreateCar = (props) => {
     } catch (error) {
       console.log(error);
     }
-   
+
   }
 
   if (loading) {
@@ -69,28 +69,23 @@ const CreateCar = (props) => {
           history={props.history}
         />
       }
-      <div className="w-full">
+      <div className="w-full relative">
         <div className="text-2xl text-center m-4">Create A New Car</div>
         <form onSubmit={handleAddCar} className="m-auto bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-3/4 lg:w-3/4">
-          <CreateCarInputs carInfo={carInfo} setCarInfo={setCarInfo}/>
+          <CreateCarInputs carInfo={carInfo} setCarInfo={setCarInfo} />
           <input
             type='submit'
             value='Create Car'
             className='btn-blue cursor-pointer'
           />
-          {picLoading ?
-            <div style={{ height: '75px' }}>
-              <Spinner width='100px' />
-            </div>
-            :
-            <FileUpload
-              picLoading={picLoading}
-              setPicLoading={setPicLoading}
-              setImages={setImages}
-              images={images}
-              user={user}
-            />
-          }
+
+          <FileUpload
+            picLoading={picLoading}
+            setPicLoading={setPicLoading}
+            setImages={setImages}
+            images={images}
+            user={user}
+          />
         </form>
       </div>
     </>
