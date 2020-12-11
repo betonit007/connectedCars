@@ -1,12 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Spinner from '../layout/Spinner'
 
 const CarCard = ({ car, carPicked }) => {
+
+  const [imageLoaded, setImageLoaded] = useState(false)
   
   return (
 
     <div onClick={()=>carPicked(car._id)} className="cursor-pointer border border-gray-400 shadow-xl bg-white rounded m-2 hover:shadow-outline overflow-hidden md:max-w-xs">
-      <div >
-        <img className="h-full w-full" src={car.photos[0]} alt={car.fullDesc}/>
+      <div className='relative'>
+        {!imageLoaded && 
+          <div className="h-full w-full absolute top-0 left-0">
+            <Spinner />
+          </div>
+        }
+        <img 
+          className="h-full w-full" 
+          src={car.photos[0]} 
+          alt={car.fullDesc}
+          onLoad={()=>setImageLoaded(true)}
+        />
       </div>
       <div className="bg-gray-300 h-full w-full">
         <div className="px-3 py-2">

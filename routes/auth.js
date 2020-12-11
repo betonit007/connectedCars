@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { check, validationResult } = require('express-validator'); // now can use second parameter in route to verify info
-const config = require('config');
+const getSecret = require("../config/secrets")
 const auth = require('../middleware/auth'); //bring in to verify token
 
 const User = require('../models/User');
@@ -49,7 +49,7 @@ router.post('/', [
         return res.status(400).json({ msg: 'Invalid Credentials' })
       }
       // run below if there is a match
-      jwt.sign({ user: { id: user.id } }, config.get('jwtSecret'), { //pass in an object with user id to create webtoken with jsonwebtoken
+      jwt.sign({ user: { id: user.id } }, await getSecret().then(secret => secret.jwt_secret), { //pass in an object with user id to create webtoken with jsonwebtoken
         expiresIn: 3600                                         // a secret must also be passed into sign (it can be whatever you want (store in config.get() from config npm))
       }, (err, token) => {
         if (err) throw err;

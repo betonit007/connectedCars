@@ -10,6 +10,7 @@ const ImageMapper = ({ image, deleteImage = f => f }) => {
                     src={image.url}
                     alt={image.public_id}
                     style={{ height: '100px' }}
+                    onLoad={()=>console.log('image loaded')}
                     
                 />
             </div>
