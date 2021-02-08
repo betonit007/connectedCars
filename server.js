@@ -1,17 +1,16 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const dotenv = require('dotenv')
 const path = require('path');
 
 const app = express();
+
+dotenv.config()
 
 connectDB();
 
 // we can now accept info from req.body and limit incoming file size to 5mb
 app.use(express.json({ extended: false, limit: '5mb' })); 
-
-// GOOGLE CLOUD DEPLOY
-app.use(express.static(path.join(__dirname, "/client/build")))
-
 
 //Define Routes
 app.use('/api/users', require('./routes/users'));
@@ -19,17 +18,18 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/cars', require('./routes/cars'));
 
 //HEROKU DEPLOY
-// if(process.env.NODE_ENV === 'production') {
-//     //Set static folder
-//     app.use(express.static('client/build'));
+if(process.env.NODE_ENV === 'production') {
+    //Set static folder
+    app.use(express.static('client/build'));
 
-//     app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
-// }
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+}
 
 //GOOGLE CLOUD DEPLOY PART 2
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, "/client/build/index.html"))
-})
+// app.get('/*', (req, res) => {
+//     app.use(express.static(path.join(__dirname, "/client/build")))
+//     res.sendFile(path.join(__dirname, "/client/build/index.html"))
+// })
 
 
 const PORT = process.env.PORT || 5001;

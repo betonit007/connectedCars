@@ -1,7 +1,6 @@
 //middleware - function that has access to the req and response cycle / object
 
 const jwt = require('jsonwebtoken');
-const getSecret = require("../config/secrets")
 
 module.exports = async (req, res, next) => {  // next just moves on to next middleware
   //Get token from header
@@ -14,7 +13,7 @@ module.exports = async (req, res, next) => {  // next just moves on to next midd
 
   //then if there is a token, we need to verify it
   try {
-    const decoded = jwt.verify(token, await getSecret().then(secret => secret.jwt_secret)); // pass in token and 'jwtSecret' to verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // pass in token and 'jwtSecret' to verify token
     
     req.user = decoded.user;
     next();

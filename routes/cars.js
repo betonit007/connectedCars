@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const cloudinary = require('cloudinary')
-const getSecret = require("../config/secrets")
 const admin = require('../middleware/admin'); //bring in to verify admin priveleges
 
 const { check, validationResult } = require('express-validator');
@@ -57,12 +56,11 @@ router.put('/', async (req, res) => {   //PUT route since we're just updating th
 router.post('/uploadimages', admin, async (req, res) => {
 
     try {
-        const secret = await getSecret()
 
         cloudinary.config({
-            cloud_name: secret.cloudinary_cloud_name,
-            api_key: secret.cloudinary_api_key,
-            api_secret: secret.cloudinary_secret
+            cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+            api_key: process.env.CLOUDINARY_API_KEY,
+            api_secret: process.env.CLOUDINARY_SECRET
         })
 
         cloudinary.uploader.upload(
